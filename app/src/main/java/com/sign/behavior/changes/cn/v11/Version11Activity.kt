@@ -1,5 +1,6 @@
 package com.sign.behavior.changes.cn.v11
 
+import android.Manifest
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -18,6 +19,26 @@ class Version11Activity : AppCompatActivity() {
 
         // 自定义toast
         customToastBackground()
+
+        // 后台位置权限
+        foregroundAndBackgroundLocationPermission()
+    }
+
+    private fun foregroundAndBackgroundLocationPermission() {
+        // 同时请求前台+后台定位权限
+        mBinding.btnForegroundAndBackground.setOnClickListener {
+            requestPermissions(
+                arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                100)
+        }
+        // 请求前台定位权限
+        mBinding.btnForeground.setOnClickListener {
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), 100)
+        }// 请求后台定位权限
+        mBinding.btnBackground.setOnClickListener {
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), 100)
+        }
     }
 
     private fun customToastBackground() {
