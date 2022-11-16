@@ -1,6 +1,8 @@
 package com.sign.behavior.changes.cn.v11
 
 import android.Manifest
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -22,6 +24,21 @@ class Version11Activity : AppCompatActivity() {
 
         // 后台位置权限
         foregroundAndBackgroundLocationPermission()
+
+        // 软件包可见性
+        getInstalledPackages()
+    }
+
+    private fun getInstalledPackages() {
+        mBinding.btnInstalledPackages.setOnClickListener {
+            val pm = this.packageManager
+            val listApplications: List<ApplicationInfo> = pm.getInstalledApplications(PackageManager.GET_META_DATA)
+            val strBuilder = StringBuilder()
+            for (app in listApplications) {
+                strBuilder.append(app.packageName + "\n\n")
+            }
+            mBinding.tvInstalledPackage.text = strBuilder.toString()
+        }
     }
 
     private fun foregroundAndBackgroundLocationPermission() {

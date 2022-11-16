@@ -45,6 +45,20 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="仅申请后台位置权限" />
+
+            <Button
+                android:id="@+id/btn_installed_packages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="获取设备安装列表" />
+
+            <TextView
+                android:id="@+id/tv_installed_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
