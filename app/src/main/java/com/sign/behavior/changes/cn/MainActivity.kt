@@ -2,6 +2,7 @@ package com.sign.behavior.changes.cn
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,5 +25,15 @@ class MainActivity : AppCompatActivity() {
         binding.btn11.setOnClickListener {
             startActivity(Intent(this@MainActivity, Version11Activity::class.java))
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Log.d("MainActivity", "===============onBackPressed===============")
+    }
+
+    override fun finish() {
+        super.finish()
+        Log.d("MainActivity", "===============finish===============")
     }
 }
